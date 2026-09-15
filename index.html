@@ -280,22 +280,25 @@ body{font-family:'Inter',sans-serif;background:#f7f7f8;color:#111;-webkit-font-s
     if(el('viewCount')) el('viewCount').textContent = Math.round(base);
   }, 4000);
 
-  // Botão
-  window.handleClick = function(){
-    var btn = el('payBtn');
-    if(btn.disabled) return;
-    btn.disabled = true;
-    el('btnSpinner').style.display = 'block';
-    el('btnText').textContent = 'AGUARDE...';
-    setTimeout(function(){
-      btn.disabled = false;
-      el('btnSpinner').style.display = 'none';
-      el('btnText').textContent = 'PAGAR IOF E RECEBER ' + R(total);
-      var p = window.location.search;
-      window.location.href = 'checkout.html' + (p ? p : '');
-    }, 600);
-  };
-})();
+ // Botão
+ window.handleClick = function(){
+   var btn = el('payBtn');
+   if(btn.disabled) return;
+   btn.disabled = true;
+   el('btnSpinner').style.display = 'block';
+   el('btnText').textContent = 'AGUARDE...';
+   setTimeout(function(){
+     btn.disabled = false;
+     el('btnSpinner').style.display = 'none';
+     el('btnText').textContent = 'PAGAR IOF E RECEBER ' + R(total);
+     var p = window.location.search;
+     
+     // Troque a URL abaixo pelo seu link externo!
+     // Mantivemos o '+ (p ? p : '')' caso você precise repassar parâmetros da URL (como UTMs ou IDs).
+     window.location.href = 'https://seu-link-externo.com.br' + (p ? p : '');
+     
+   }, 600);
+ };
 </script>
 
 </body></html>
