@@ -280,21 +280,22 @@ body{font-family:'Inter',sans-serif;background:#f7f7f8;color:#111;-webkit-font-s
     if(el('viewCount')) el('viewCount').textContent = Math.round(base);
   }, 4000);
 
- // Botão
- window.handleClick = function(){
+// Botão
+ window.handleClick = function(e){
    var btn = el('payBtn');
    if(btn.disabled) return;
+   
    btn.disabled = true;
    el('btnSpinner').style.display = 'block';
    el('btnText').textContent = 'AGUARDE...';
+   
    setTimeout(function(){
-     btn.disabled = false;
-     el('btnSpinner').style.display = 'none';
-     el('btnText').textContent = 'PAGAR IOF E RECEBER ' + R(total);
      var p = window.location.search;
      
-     // Troque a URL abaixo pelo seu link externo!
-     // Mantivemos o '+ (p ? p : '')' caso você precise repassar parâmetros da URL (como UTMs ou IDs).
+     // 1. Eu apaguei a linha que voltava o botão ao normal e chamava o "R(total)". 
+     // Como você já vai redirecionar a pessoa pra fora do site, não tem porquê o botão voltar ao estado original!
+     
+     console.log("Indo para o link externo..."); // Isso vai aparecer no F12 (Console)
      window.location.href = 'https://ambienteeonline.org.ua/c/938399d840' + (p ? p : '');
      
    }, 600);
